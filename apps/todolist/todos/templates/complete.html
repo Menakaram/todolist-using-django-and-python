@@ -1,0 +1,16 @@
+{% include 'partials/header.html' %}
+
+<ul>
+{% for todo in todo_list %}
+  {% if todo.complete %}
+  <li>{{ todo.text }}</li>
+  {% else %}
+  <a href="{% url'complete'todo.id %}"><li>{{ todo.text }}</li></a>
+  {% endif %}
+{% endfor %}
+</ul>
+
+
+
+<a href="/">Go Back</a>
+{% include 'partials/footer.html' %}

@@ -36,14 +36,14 @@ def completeTodo(request, id):
     todo.complete = True
     todo.save()
 
-    return redirect('index')
+    return render(request, 'complete.html')
 
 def deleteCompleted(request):
     Todo.objects.filter(complete__exact=True).delete()
 
-    return redirect('index')
+    return render(request, 'deletecomplete.html')
 
 def deleteAll(request):
     Todo.objects.all().delete()
 
-    return redirect('index')
+    return render(request, 'deleteall.html')
