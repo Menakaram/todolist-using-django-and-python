@@ -1,0 +1,40 @@
+{% include 'partials/header.html' %}
+   <!-- <ul>
+      {% for todo in todos %}
+        <li><a href="/todos/details/{{todo.id}}">{{todo.title}}</a>: {{todo.text}}</li>
+      {% endfor %}
+    </ul>-->
+
+
+<form action="{% url 'add' %}" method="post">
+{% csrf_token %}
+  <label for="title">Title</label><br />
+  <input type="text" name="title" id="title" />
+  <br>
+  <label for="text">Text</label><br />
+  <textarea name="text" id="text"></textarea>
+  <br><br>
+  <input type="submit" value="Submit" />
+</form>
+<br>
+
+<ul>
+{% for todo in todo_list %}
+  {% if todo.complete %}
+  <li>{{ todo.text }}</li>
+  {% else %}
+  <a href="{% url'complete'todo.id %}"><li>{{ todo.text }}</li></a>
+  {% endif %}
+{% endfor %}
+</ul>
+
+<a href="{% url 'deleteall' %}"><button type="button">
+<i></i> DELETE ALL</button></a>
+
+
+<a href="{% url 'deletecomplete' %}"><button type="button"><i></i> DELETE COMPLETED</button></a>
+
+<a href="/">Go Back</a>
+
+
+{% include 'partials/footer.html' %}

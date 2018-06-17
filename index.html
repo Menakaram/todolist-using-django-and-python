@@ -1,0 +1,30 @@
+{% include 'partials/header.html' %}
+   <!-- <ul>
+      {% for todo in todos %}
+        <li><a href="/todos/details/{{todo.id}}">{{todo.title}}</a>: {{todo.text}}</li>
+      {% endfor %}
+    </ul>-->
+
+<div id="demo">
+<button type="button" onclick="tryit()">Add Taskcard</button>
+</div>
+
+<script>
+function tryit() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("demo").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET", "addtask.html", true);
+  xhttp.send();
+}
+</script>
+
+
+
+
+
+{% include 'partials/footer.html' %}
